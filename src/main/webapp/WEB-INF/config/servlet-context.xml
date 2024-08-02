@@ -23,9 +23,10 @@
 	<context:component-scan base-package="com.simple.basic.*" />
 
 
-	
-	
-	
+<!-- 서비스 영역을 빈으로 생성하기 -->
+<!--
+	<beans:bean id="scoreService" class="com.simple.basic.service.score.ScoreServiceImpl"></beans:bean>
+-->	
 	
 	
 	
