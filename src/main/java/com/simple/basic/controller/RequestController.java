@@ -16,6 +16,10 @@ import com.simple.basic.command.MemberVO;
 @Controller
 @RequestMapping("/request") // 컨트롤러 모든 요청 경로 앞에 /request를 붙이겠다는 뜻
 public class RequestController {
+	
+	
+	// 값을 받는 방법 VO >>>> RequestParam (단일 값) >>>>>> 기타 등등 순으로 많이 쓰임
+	
 
 //	void형은 들어온 요청 경로가 화면으로 나가는 경로와 같음
 //	@RequestMapping("/req_ex01")

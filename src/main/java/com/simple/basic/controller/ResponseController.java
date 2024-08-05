@@ -22,10 +22,14 @@ public class ResponseController {
 	}
 	
 	
+	// 값을 전달하는 방법 Model (requesst.setattribute랑 같음, 가장 많이 쓰임) , ModelAndView, ModelAttribute 등
+	
+	
+	
 	// model 전달자
 //	@RequestMapping("/res_ex02") 
-//	public String ex02(Model model) {
-//		model.addAttribute("data", "홍길동"); // 키, 값
+//	public String ex02(ModelMap model) {
+//		model.addAttribute("data", "홍길동"); // 키, 값 //  = request.setAttribute(키, 값)
 //		model.addAttribute("now", new Date());
 //		
 //		return "response/res_ex02";
@@ -61,12 +65,13 @@ public class ResponseController {
 	/////////////////////////////////////////////////////////////////////////////////////
 	
 	// 리다이렉트?
-	// 스프링은 기본 이동방식이 forward
-	// 리다이렉트는 다시 컨트롤러에 태울 용도로 쓰임
+	// 스프링은 기본 이동방식이 'forward'
+	// '리다이렉트는 다시 컨트롤러에 태울 용도로 쓰임'
 	
 	@RequestMapping("/login")
 	public String loginView() {
 		
+		System.out.println("리다이렉트 타고 나감");
 		return "response/login";
 	}
 	
@@ -81,8 +86,10 @@ public class ResponseController {
 			return "response/login_ok";
 		} else { 
 			// 다시 컨트롤러 타서 /login 경로 타고 로그인 페이지로 넘어감
-			// 리다이렉트를 보낼 때 일회성 데이터로 넘기는 방식을 제공해줌
+			// 리다이렉트를 보낼 때 딱 한 번! 데이터로 넘기는 방식을 제공해줌
 			ra.addFlashAttribute("msg", "일치하지 않다");
+			
+			// redirect 쓰는 방법 :
 			return "redirect:/response/login"; // 기본 forward 방식 아니고 redirect 방식으로
 			
 		}

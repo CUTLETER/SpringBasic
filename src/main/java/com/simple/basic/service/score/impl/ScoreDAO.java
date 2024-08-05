@@ -8,4 +8,5 @@ public interface ScoreDAO {
 
 	public void regist(ScoreVO vo);
 	public ArrayList<ScoreVO> getScore();
+	public void delete(int sno);
 }

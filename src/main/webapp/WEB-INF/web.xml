@@ -4,22 +4,33 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          >
 
+	<!-- 
+		프로젝트 전역에서 사용할 설정파일은
+		listener클래스와 함께 context-param으로 전달하게 됩니다.
+	 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/config/root-context.xml</param-value>
+		<param-value>/WEB-INF/config/root-context.xml</param-value><!-- 전역 설정 위치 -->
 	</context-param>
 	
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	
 
+	<!-- 
+		1. DispatcherServlet을 모든 클라이언트 요청에대해서 연결함 
+		초기파라미터로 스프링 설정파일이 들어갑니다 servlet-context.xml
+	-->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
+				<!-- 스프링 설정 파일 -->
 				/WEB-INF/config/servlet-context.xml
+				/WEB-INF/config/aspect-context.xml
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>

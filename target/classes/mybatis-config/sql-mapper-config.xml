@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+  <configuration>
+	
+	<!-- 테이블의 _ 언더바를 자바의 카멜로 변경시켜줌 -->
+	<settings>
+	  <setting name="mapUnderscoreToCamelCase" value="true"/> 
+	</settings>
+	
+	<!-- DB 정보는 bean 주입으로 들어감 (여   기선 생략 O) -->
+	<!-- mapper의 위치로 bean 주입으로 들어감 (여기선 생략 O) -->
+	
+	<!-- parameterType이나 resultType명을 풀네임으로 쓰지 않고 단축명으로 사용함 -->
+	<typeAliases>
+		<typeAlias type="com.simple.basic.command.ScoreVO" alias="ScoreVO"/>
+	</typeAliases>
+  
+  </configuration>

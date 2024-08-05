@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.simple.basic.board.board.BoardMapper">
+  
+  <insert id="regist" parameterType="com.simple.basic.command.BoardVO">
+  	INSERT INTO SBOARD(NUM, NAME, TITLE, CONTENT) VALUES(SBOARD_SEQ.NEXTVAL, #{name}, #{title}, #{content})
+  </insert>
+ 
+  <select id="getPost" resultType="com.simple.basic.command.BoardVO">
+  	SELECT * FROM SBOARD ORDER BY NUM DESC
+  </select>
+  
+  <delete id="delete" parameterType="int">
+  	DELETE FROM SBOARD WHERE NUM = #{num}
+  </delete>
+  
+  </mapper>

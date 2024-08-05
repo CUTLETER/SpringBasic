@@ -19,6 +19,53 @@
 	
 	
 	<dependencies>
+		
+		<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
+		<!--커넥션 풀-->
+		<dependency>
+		    <groupId>com.zaxxer</groupId>
+		    <artifactId>HikariCP</artifactId>
+		    <version>2.7.8</version>
+		</dependency>
+	
+			
+		<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc8 -->
+		<!--오라클 JDBC-->
+		<dependency>
+		    <groupId>com.oracle.database.jdbc</groupId>
+		    <artifactId>ojdbc8</artifactId>
+		    <version>21.5.0.0</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+		<!--스프링 JDBC 모듈-->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-jdbc</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+		
+		
+		<!-- MyBatis 관련 라이브러리 추가-->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.4.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+
+		<!-- AOP -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${org.aspectj-version}</version>
+		</dependency>
+
+
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -37,14 +84,14 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-				
+
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj-version}</version>
-		</dependency>	
-		
+		</dependency>
+
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -94,8 +141,8 @@
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
 		</dependency>
-		
-		
+
+
 		<!-- 3. 자바 서블릿 스팩, 3.1.0으로 변경, artifactId를 javax.servlet-api로 변경 -->
 		<!-- Servlet -->
 		<dependency>
@@ -115,7 +162,7 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-	
+
 		<!-- Test버전을 4.12로 변경(4.7버전이 하위 버전이기 떄문에) -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -130,13 +177,9 @@
 		    <version>${org.springframework-version}</version>
 		    <scope>test</scope>
 		</dependency>
-	
-		
-		
-		
-		
 		
 	</dependencies>
+
 
 	<!-- 1. 메이븐 컴파일 옵션을 1.8로 선언, 메이븐 버전을 3.5.1로 변경, maven update실행 -->
     <build>
