@@ -1,16 +1,24 @@
 package com.simple.basic.util.aop;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.util.Arrays;
+
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Aspect // AOP 클래스
 @Component // 이 클래스는 component-scan에 읽혀서 bean으로 생성됨
 public class LogAdvice {
+	
+	public static final Logger log = LoggerFactory.getLogger(LogAdvice.class); // 괄호 안에 (로그 사용할 클래스명.class)
 	// advice - 공통 기능
 	// point cut - 내가 적용할 메소드에 advice 부착하는 행위
 	// 맨앞 *은 접근 제어자
@@ -44,10 +52,30 @@ public class LogAdvice {
 //		메소드 실행되는 target 확인 가능함
 //		이런 결과를 수집해서 전체 log로 찍어주거나 FileOutput을 이용해서 실행 로그 출력을 해줄 수 있음
 		
+		long start = System.currentTimeMillis();
+		
+		
+		log.info("실행 클래스 : "+jp.getTarget());
+		log.info("실행 메소드 : "+jp.getSignature().toString());
+		log.info("매개 값 : "+Arrays.toString(jp.getArgs()));
+		
+	
 		Object result = null;
 		
 		try {
 			result = jp.proceed(); // 타겟 메소드의 실행
+			long end = System.currentTimeMillis();
+			log.info("실행 시간 : "+(end-start)*0.001);
+			
+			String path = "C:\\Users\\user\\Desktop\\course\\spring\\spring_log\\240806_log.txt";
+			BufferedWriter bw = new BufferedWriter(new FileWriter(path, true));
+			bw.write("실행 클래스 : "+jp.getTarget()+"\n");
+			bw.write("실행 메소드 : "+jp.getSignature().toString()+"\n");
+			bw.write("매개 값 : "+Arrays.toString(jp.getArgs())+"\n");
+			bw.write("실행 시간 : "+((end-start)*0.001)+"\n");
+			bw.flush();
+			bw.close();
+			
 		} catch (Throwable e) {
 			e.printStackTrace(); // 해당 메소드에서 에러가 발생하면, 이 친구가 로그를 같이 찍음
 		}
